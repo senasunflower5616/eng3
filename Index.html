@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Adventure: ภารกิจกู้คืนสวนผลไม้</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Fredoka', sans-serif; }
+        .page { display: none; }
+        .active { display: block; }
+        .bounce-btn { transition: transform 0.2s; }
+        .bounce-btn:active { transform: scale(0.95); }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-sky-100 to-emerald-50 min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-lg w-full bg-white rounded-[3rem] shadow-2xl p-8 border-[6px] border-emerald-400">
+        
+        <!-- หน้าที่ 1: แนะนำภารกิจ -->
+        <div id="page1" class="page active text-center">
+            <div class="text-7xl mb-6">🍎🐿️</div>
+            <h1 class="text-4xl font-bold text-emerald-600 mb-4">สวนมหัศจรรย์</h1>
+            <p class="text-xl text-gray-600 mb-8">กระรอกน้อยขโมยชื่อผลไม้ไปหมดเลย! ช่วยเรากู้คืนสวนหน่อยนะ</p>
+            <button onclick="showPage(2)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white text-2xl font-bold py-6 rounded-[2rem] bounce-btn shadow-lg">เริ่มภารกิจ! 🚀</button>
+        </div>
+
+        <!-- หน้าที่ 2: แหล่งข้อมูล -->
+        <div id="page2" class="page text-center">
+            <h2 class="text-3xl font-bold mb-6 text-emerald-600">มาเรียนรู้กัน!</h2>
+            <div class="grid grid-cols-3 gap-4 mb-8">
+                <div class="bg-red-50 p-4 rounded-3xl"><div class="text-5xl mb-2">🍎</div><p class="font-bold">Apple</p></div>
+                <div class="bg-yellow-50 p-4 rounded-3xl"><div class="text-5xl mb-2">🍌</div><p class="font-bold">Banana</p></div>
+                <div class="bg-orange-50 p-4 rounded-3xl"><div class="text-5xl mb-2">🍊</div><p class="font-bold">Orange</p></div>
+            </div>
+            <button onclick="showPage(3)" class="w-full bg-blue-500 text-white text-xl font-bold py-4 rounded-full">ไปหน้าถัดไป →</button>
+        </div>
+
+        <!-- หน้าที่ 3: พื้นที่แลกเปลี่ยน -->
+        <div id="page3" class="page text-center">
+            <h2 class="text-3xl font-bold mb-6">ผลไม้ที่หนูชอบ?</h2>
+            <textarea class="w-full h-32 border-4 border-emerald-200 rounded-3xl p-4 mb-4" placeholder="พิมพ์ชื่อผลไม้ที่ชอบที่นี่..."></textarea>
+            <button onclick="showPage(4)" class="w-full bg-purple-500 text-white text-xl font-bold py-4 rounded-full">ส่งความคิดเห็น</button>
+        </div>
+
+        <!-- หน้าที่ 4: แบบฟอร์มเสนอแนวทาง -->
+        <div id="page4" class="page text-center">
+            <h2 class="text-3xl font-bold mb-6">ทดสอบความจำ!</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="finishTask()" class="bg-red-400 p-8 rounded-3xl text-white text-2xl font-bold">🍎 Apple</button>
+                <button onclick="finishTask()" class="bg-yellow-400 p-8 rounded-3xl text-white text-2xl font-bold">🍌 Banana</button>
+            </div>
+        </div>
+
+        <!-- หน้าที่ 5: ประเมินผล -->
+        <div id="page5" class="page text-center">
+            <div class="text-7xl mb-6">🏆</div>
+            <h2 class="text-4xl font-bold text-emerald-600 mb-4">เก่งมาก!</h2>
+            <p class="text-xl mb-8">คุณคือกู้ภัยสวนตัวจริง!</p>
+            <button onclick="location.reload()" class="w-full bg-gray-500 text-white py-4 rounded-full">เริ่มใหม่</button>
+        </div>
+
+    </div>
+
+    <script>
+        function showPage(num) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + num).classList.add('active');
+        }
+        function finishTask() {
+            showPage(5);
+        }
+    </script>
+</body>
+</html>
